@@ -27,4 +27,4 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 - Tick x86_64.
 - Under Compatible Runtime, select Python3.11.
 - Click Create.
-- epeat these steps for a total of 3 layers by selecting the other 2 zip files: "Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip" and "Layer-03-PyMuPDF.zip".
+- Repeat these steps for a total of 3 layers by selecting the other 2 zip files: "Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip" and "Layer-03-PyMuPDF.zip".
