@@ -1,8 +1,8 @@
-# Create PDF Chatbot using OpenAI and fetch PDF files from S3 bucket
+# Create PDF Chatbot using OpenAI by using the PDF files from S3 bucket
 
 ## Overview
 
-This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files from an S3 bucket. The process involves creating a VPC, setting up an RDS PostgreSQL DB, creating Lambda functions, layers, and interacting with the system using Postman.
+This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the PDF files from S3 bucket. The process involves updating code from Deployment.zip and test the API.
 
 ## Steps
 
@@ -10,8 +10,8 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files
 
 - Go to respective Lambda function created for this folder `02-OpenAI`.
 - Under the "Code" tab, click on "Upload from" and select the option ".zip file".
-- Kindly make sure you are under `02-OpenAI` folder on your local machine
-- Select "Deployment.zip" from your local machine and click on "Save". 
+- Kindly make sure you are under `02-OpenAI` folder on your local machine.
+- Select "Deployment.zip" from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
 
@@ -23,7 +23,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files
 
 - Use the POST method on the URL (add /train at the end): `https://<ID>.lambda-url.<region>.on.aws/train`
 
-- Request body:
+- Request body in form-data:
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - Example:
@@ -49,17 +49,17 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files
 
 - Use the POST method on the URL (add /query at the end): `https://<ID>.lambda-url.<region>.on.aws/query`
 
-- Request body:
+- Request body in form-data:
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - `question`: <ask query related to PDFs in S3 bucket>
-   - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don'\''t know. Please try again. P:{documents} Q: {query} A:
+   - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
    - Example:
         ```
         user_id: user-1234
         deployment_id: dep-1234
-        question: 
-        prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don'\''t know. Please try again. P:{documents} Q: {query} A:
+        question: what are Some of the key elements of focus group research? 
+        prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
         ```
         
 - Click on Send and wait for the API response.
