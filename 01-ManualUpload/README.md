@@ -66,7 +66,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
 - Request body in form-data:
    - `user_id`: <use the same user_id as sent during /upload and /train>
    - `deployment_id`: <use the same deployment_id as sent during /upload and /train>
-   - `question`: <ask query related to uploaded PDFs>
+   - `question`: < ask query related to uploaded PDFs >
    - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
    - Example:
         ```

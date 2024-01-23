@@ -52,7 +52,7 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
 - Request body in form-data:
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
-   - `question`: <ask query related to PDFs in S3 bucket>
+   - `question`: < ask query related to PDFs in S3 bucket >
    - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
    - Example:
         ```
@@ -75,7 +75,7 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
 - Request body in form-data:
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
-   - `question`: <ask query related to PDFs in S3 bucket>
+   - `question`: < ask query related to PDFs in S3 bucket >
    - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
    - Example:
         ```
