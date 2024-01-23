@@ -1,10 +1,11 @@
 # PDF Chatbot 
 
-## Pre-requisite mandatory steps to use this repository
 
 ## Overview
 
 This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process involves creating a VPC, setting up an RDS PostgreSQL DB, creating Lambda functions, layers, and interacting with the application using Postman.
+
+## Pre-requisite mandatory steps to use this repository
 
 ### 1. Create VPC 
 
