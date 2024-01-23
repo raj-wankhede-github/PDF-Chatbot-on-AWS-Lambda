@@ -11,7 +11,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
 - Go to respective Lambda function created for this folder `02-OpenAI`.
 - Under the "Code" tab, click on "Upload from" and select the option ".zip file".
 - Kindly make sure you are under `02-OpenAI` folder on your local machine.
-- Select "Deployment.zip" from respective folder on your local machine and click on "Save". 
+- Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
 
@@ -33,7 +33,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
         ```
 
 - Optionally, use Query String parameters (known as “params” in Postman):
-   - `AI-KEY: <use-ai-key-here>`
+   - `AI-KEY`: <use-ai-key-here>
    - Example: 
         ```
         AI-KEY: sk-abcd1234567890
