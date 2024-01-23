@@ -1,6 +1,6 @@
 # PDF Chatbot 
 
-# Pre-requisite mandatory steps for ManualUpload/openAI/AzureOpenAI
+## Pre-requisite mandatory steps for ManualUpload/openAI/AzureOpenAI
 
 ## Overview
 
