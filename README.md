@@ -43,7 +43,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
   - Repeat this step and add all 3 layers to a function.
 - Perform the same for other 2 Lambda functions. 
 
-### 7. Configuration on all 3 Lambda functions
+### 7. Configuration on all 3 Lambda Functions
 
 - Change timeout to 15min and RAM to 512MB:
     - Lambda -> Configuration -> General configuration
@@ -118,6 +118,6 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-2.pdf
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-3.pdf
     ```
-### 11. Other configurations
+### 11. Other Configurations
 
 - Kindly refer README.md file of the respective folder `01-ManualUpload, 02-OpenAI, 03-AzureOpenAI` for additional Configuration related to specific application and test the same using Postman application.
