@@ -72,7 +72,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
         ```
         user_id: user-4321
         deployment_id: user-4321
-        question: what are Some of the key elements of focus group research? 
+        question: What are Some of the key elements of focus group research? 
         prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
         ```
         
