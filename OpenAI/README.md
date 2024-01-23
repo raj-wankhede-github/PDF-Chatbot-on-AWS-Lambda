@@ -22,3 +22,4 @@
     &emsp;&emsp;a)	In case the layer name is not shown in drop down, select “Specify an ARN” and provide ARN of Lambda Layer version.
 
 6) 
+ 
