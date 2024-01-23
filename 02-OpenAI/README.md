@@ -64,3 +64,44 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
         
 - Click on Send and wait for the API response.
 
+### 4. Chat with the Chatbot
+
+#### Using Postman
+
+- Obtain the Lambda function URL from `Function -> Configuration -> Function URL`.
+
+- Use the POST method on the URL (add /chat at the end): `https://<ID>.lambda-url.<region>.on.aws/chat`
+
+- Request body in form-data:
+   - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
+   - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
+   - `question`: <ask query related to PDFs in S3 bucket>
+   - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+   - Example:
+        ```
+        user_id: user-1234
+        deployment_id: dep-1234
+        question: what are Some of the key elements of focus group research? 
+        prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+        ```
+        
+- Click on Send and wait for the API response.
+
+### 5. Remove the namespace 
+
+#### Using Postman
+
+- Obtain the Lambda function URL from `Function -> Configuration -> Function URL`.
+
+- Use the POST method on the URL (add /remove at the end): `https://<ID>.lambda-url.<region>.on.aws/remove`
+
+- Request body in form-data:
+   - `user_id`: <use the same user_id as sent during /train>
+   - `deployment_id`: <use the same deployment_id as sent during /train>
+   - Example:
+        ```
+        user_id: user-1234
+        deployment_id: user-1234
+        ```
+
+- Click on Send and wait for the request to Finish.
