@@ -1,8 +1,0 @@
-pinecone_client==2.2.2
-#psycopg2==2.9.6
-psycopg2_binary==2.9.6
-PyPDF2==3.0.1
-python-dotenv==1.0.0
-tqdm==4.65.0
-Werkzeug==2.3.6
-tiktoken
