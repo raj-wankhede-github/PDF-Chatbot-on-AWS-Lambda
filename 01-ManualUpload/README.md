@@ -18,7 +18,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
 
 #### Using Postman
 
-- Obtain the OpenAI Lambda function URL from `Function -> Configuration -> Function URL`.
+- Obtain the Lambda function URL from `Function -> Configuration -> Function URL`.
 
 - Use the POST method on the URL (add /upoad at the end): `https://<ID>.lambda-url.<region>.on.aws/upload`
 
@@ -32,9 +32,9 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
         deployment_id: user-4321
         files: test1.pdf
         ```
-   - Here, `user_id, deployment_id` are of type `Text` and `files` is of type `File`
+   - Here, `user_id, deployment_id` are of type `Text` and `files` is of type `File` under form-data.
 
-- Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs in the S3 folder.
+- Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs sent by user.
 
 ### 3. Train the Chatbot
 

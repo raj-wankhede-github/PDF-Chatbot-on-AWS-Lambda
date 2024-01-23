@@ -56,7 +56,6 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
         - `ENVIRONMENT`: <Environment from Pinecone. E.g., gcp-starter>
         - `PINECONE_API_KEYS`: <pinecone api key>
         - `PINECONE_INDEX_NAME`: <Pinecone index name>
-        
 
 - Additional Environment Variable for OpenAI Lambda function:
     - `OPEN_API_KEYS`: < Key for OpenAI >
