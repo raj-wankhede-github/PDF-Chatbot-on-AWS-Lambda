@@ -7,7 +7,7 @@
 3)	Clone Github repo (or Download) and move to OpenAI folder, where you will find 4 zip files.
 
 4) Create Lambda function from AWS Console with python3.11 runtime with x86_64 architecture.
-   a) Go to newly created function and under "Code" tab click on "Upload from" and select option ".zip file".
+   &emsp;&emsp;a) Go to newly created function and under "Code" tab click on "Upload from" and select option ".zip file".
    b) Select Deployment-OpenAI.zip from your local machine and click on "Save".
 
 4) Create Lambda layer:\n
