@@ -26,7 +26,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files
   - Under the "Code" tab, click on "Upload from" and select the option ".zip file".
   - Select "Deployment-OpenAI.zip" from your local machine and click on "Save".
 
-### 5. Create Lambda Layer (Skip this step if you already have below Lambda layers)
+### 5. Create Lambda Layer
 
 - Go to Lambda Layers (in the same region as the created Lambda function) and click on "Create Layer".
 - Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose "Layer-01-Flask-langchain-openai.zip".
@@ -100,3 +100,4 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI and PDF files
         ```
         
 - Click on Send and wait for the API response.
+
