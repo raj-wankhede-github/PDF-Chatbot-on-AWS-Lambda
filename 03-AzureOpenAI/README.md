@@ -45,7 +45,7 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
 
 #### Using Postman
 
-- Obtain the OpenAI Lambda function URL from `Function -> Configuration -> Function URL`.
+- Obtain the Lambda function URL from `Function -> Configuration -> Function URL`.
 
 - Use the POST method on the URL (add /query at the end): `https://<ID>.lambda-url.<region>.on.aws/query`
 
