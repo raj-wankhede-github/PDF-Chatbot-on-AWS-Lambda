@@ -33,7 +33,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
         ```
 
 - Optionally, use Query String parameters (known as “params” in Postman):
-   - `AI-KEY`: <use-ai-key-here>
+   - `AI-KEY`: <use-openai-key-here>
    - Example: 
         ```
         AI-KEY: sk-abcd1234567890
@@ -87,7 +87,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
         
 - Click on Send and wait for the API response.
 
-### 5. Remove the namespace 
+### 5. Remove the Pinecone namespace 
 
 #### Using Postman
 
