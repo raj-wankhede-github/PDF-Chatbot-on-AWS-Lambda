@@ -19,20 +19,21 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 3. Clone GitHub Repository
 
-- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the AzureOpenAI folder, where 4 zip files are available.
+- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the `04-Lambda-Layers` folder, where 3 zip files are available.
 
 ### 4. Create Lambda Layer
 
 - Go to Lambda Layers (in the same region as the created Lambda function) and click on "Create Layer".
-- Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose "Layer-01-Flask-langchain-openai.zip".
+- Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose `Layer-01-Flask-langchain-openai.zip`.
 - Tick x86_64.
 - Under Compatible Runtime, select Python3.11.
 - Click Create.
-- Repeat these steps for a total of 3 layers by selecting the other 2 zip files: "Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip" and "Layer-03-PyMuPDF.zip".
+- Repeat above steps and select the other 2 zip files: `Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip` and `Layer-03-PyMuPDF.zip`.
+- This process shall create 3 Lambda layers.
 
 ### 5. Create Lambda Function
 
-- Create 3 Lambda functions from the AWS Console with python3.11 runtime and x86_64 architecture.
+- Create 3 Lambda functions from the AWS Console with python3.11 runtime and x86_64 architecture. Leave everything else to default.
 
 ### 6. Add Layers to Lambda Function
 
@@ -117,3 +118,6 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-2.pdf
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-3.pdf
     ```
+### 11. Other configurations
+
+- Kindly refer README.md file of the respective folder `01-ManualUpload, 02-OpenAI, 03-AzureOpenAI` for additional Configuration related to specific application and test the same using Postman application.
