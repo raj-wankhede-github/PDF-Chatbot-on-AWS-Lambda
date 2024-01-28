@@ -54,8 +54,8 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
         - `DBPASSWORD`: <DB password from step 2>
         - `DBUSER`: <DB user from step 2>
         - `ENVIRONMENT`: <Environment from Pinecone. E.g., gcp-starter>
-        - `PINECONE_API_KEYS`: <pinecone api key>
-        - `PINECONE_INDEX_NAME`: <Pinecone index name>
+        - `PINECONE_API_KEYS`: < Pinecone api key >
+        - `PINECONE_INDEX_NAME`: < Pinecone index name >
 
 - Additional Environment Variable for OpenAI Lambda function:
     - `OPEN_API_KEYS`: < Key for OpenAI >
@@ -64,6 +64,9 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 - Additional Environment Variables for Azure OpenAI Lambda function:
     - `AZURE_OPENAI_ENDPOINT`: < Custom Azure OpenAI Endpoint >
     - `AZURE_OPEN_API_KEYS`: < Key for Azure OpenAI >
+    - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
+
+- Additional Environment Variable for OpenAI Lambda function:
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Enable Function URL:
