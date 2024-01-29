@@ -62,7 +62,7 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
 
         ```
    - NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
-   -    Reference: 
+   - Reference: 
         - https://docs.anthropic.com/claude/reference/complete_post 
         - https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html#api-inference-examples-claude
 
