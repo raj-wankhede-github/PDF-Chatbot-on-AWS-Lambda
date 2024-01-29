@@ -1,4 +1,4 @@
-# PDF Chatbot 
+# PDF Chatbot on AWS Lambda
 
 ## Overview
 
