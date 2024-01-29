@@ -1,4 +1,4 @@
-# Create PDF Chatbot using Azure OpenAI by using the PDF files from S3 bucket
+# Create PDF Chatbot using Amazon Bedrock by using the PDF files from S3 bucket
 
 ## Overview
 
