@@ -13,9 +13,9 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
 
 ### 1. Upload Deployment.zip to Lambda Function
 
-- Go to respective Lambda function created for this folder `03-AzureOpenAI`.
+- Go to respective Lambda function created for this folder `05-Amazon-Bedrock`.
 - Under the "Code" tab, click on "Upload from" and select the option ".zip file".
-- Kindly make sure you are under `03-AzureOpenAI` folder on your local machine.
+- Kindly make sure you are under `05-Amazon-Bedrock` folder on your local machine.
 - Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
@@ -33,15 +33,8 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - Example:
         ```
-        user_id: user-5678
-        deployment_id: dep-5678
-        ```
-
-- Optionally, use Query String parameters (known as “params” in Postman):
-   - `AI-KEY`: <use-azure-ai-key-here>
-   - Example: 
-        ```
-        AI-KEY: abcd1234xyz
+        user_id: user-001
+        deployment_id: dep-001
         ```
 
 - Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs in the S3 folder.
@@ -58,14 +51,19 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - `question`: < ask query related to PDFs in S3 bucket >
-   - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+   - `prompt`:< \n\nHuman: {userQuestion} \n\nAssistant: >
+
    - Example:
         ```
-        user_id: user-5678
-        deployment_id: dep-5678
+        user_id: user-001
+        deployment_id: dep-001
         question: what are Some of the key elements of focus group research? 
-        prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+        prompt = \n\nHuman: You are given a document and a query. You need to answer the query on the basis of document. \nIf the answer is not contained within the text below, say - \"Sorry, I dont know. Please try again.\", and do not add any other text in response. \n\n<Document>:{documents} </Document> \n<Query>: {query}</Query> \n\nAssistant:
+
         ```
+   - NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
+   Reference: https://docs.anthropic.com/claude/reference/complete_post 
+
         
 - Click on Send and wait for the API response.
 
@@ -81,13 +79,13 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - `question`: < ask query related to PDFs in S3 bucket >
-   - `prompt`: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+   - `prompt`: < \n\nHuman: {userQuestion} \n\nAssistant: >
    - Example:
         ```
-        user_id: user-5678
-        deployment_id: dep-5678
+        user_id: user-001
+        deployment_id: dep-001
         question: what are Some of the key elements of focus group research? 
-        prompt: You are given a paragraph and a query. You need to answer the query on the basis of paragraph. If the answer is not contained within the text below, say Sorry, I don't know. Please try again. P:{documents} Q: {query} A: 
+        prompt: \n\nHuman: You are given a document and a query. You need to answer the query on the basis of document. \nIf the answer is not contained within the text below, say - \"Sorry, I dont know. Please try again.\", and do not add any other text in response. \n\n<Document>:{documents} </Document> \n<Query>: {query}</Query> \n\nAssistant:
         ```
         
 - Click on Send and wait for the API response.
@@ -105,8 +103,8 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
    - `deployment_id`: <use the same deployment_id as sent during /train>
    - Example:
         ```
-        user_id: user-5678
-        deployment_id: user-5678
+        user_id: user-001
+        deployment_id: user-001
         ```
 
 - Click on Send and wait for the request to Finish.
