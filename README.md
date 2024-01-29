@@ -18,7 +18,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 3. Clone GitHub Repository
 
-- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the `04-Lambda-Layers` folder, where 3 zip files are available.
+- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the `00-Lambda-Layers` folder, where 3 zip files are available.
 
 ### 4. Create Lambda Layer
 
