@@ -19,7 +19,13 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 - Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
-### 2. Train the Chatbot
+### 2. Provide Lambda Execution Role access to Bedrock service
+
+- Lambda -> Configuration -> Permissions -> Click on Role name and it will open IAM console in new browser tab with Role in it.
+- Drop down on Add Permissions and click Attach policies
+- Select `AmazonBedrockFullAccess` and add permission to the Execution Role.
+
+### 3. Train the Chatbot
 
 #### Using Postman
 
@@ -38,7 +44,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 
 - Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs in the S3 folder.
 
-### 3. Query the Chatbot
+### 4. Query the Chatbot
 
 #### Using Postman
 
@@ -68,7 +74,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
         
 - Click on Send and wait for the API response.
 
-### 4. Chat with the Chatbot
+### 5. Chat with the Chatbot
 
 #### Using Postman
 
@@ -96,7 +102,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 
 - Click on Send and wait for the API response.
 
-### 5. Remove the Pinecone namespace
+### 6. Remove the Pinecone namespace
 
 #### Using Postman
 

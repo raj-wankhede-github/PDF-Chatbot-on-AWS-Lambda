@@ -14,7 +14,12 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
 - Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
-### 2. Upload PDF files
+### 2. Remove permission for S3 from Lambda Execution Role
+
+    - Lambda -> Configuration -> Permissions -> Click on Role name and it will open IAM console in new browser tab with Role in it.
+    - From the Permissions policies, select `AmazonS3FullAccess` and click on Remove.
+
+### 3. Upload PDF files
 
 #### Using Postman
 
@@ -36,7 +41,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
 
 - Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs sent by user.
 
-### 3. Train the Chatbot
+### 4. Train the Chatbot
 
 #### Using Postman
 
@@ -55,7 +60,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
 
 - Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs in the S3 folder.
 
-### 4. Query the Chatbot
+### 5. Query the Chatbot
 
 #### Using Postman
 
@@ -78,7 +83,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
         
 - Click on Send and wait for the API response.
 
-### 5. Chat with the Chatbot
+### 6. Chat with the Chatbot
 
 #### Using Postman
 
@@ -101,7 +106,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by manually u
         
 - Click on Send and wait for the API response.
 
-### 6. Remove the Pinecone namespace
+### 7. Remove the Pinecone namespace
 
 #### Using Postman
 

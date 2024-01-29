@@ -27,27 +27,27 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 - Tick x86_64.
 - Under Compatible Runtime, select Python3.11.
 - Click Create.
-- Repeat above steps and select the other 2 zip files: `Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip` and `Layer-03-PyMuPDF.zip`.
-- This process shall create 3 Lambda layers.
+- Repeat above steps and select the other zip files: `Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip` and `Layer-03-PyMuPDF.zip`.
+- This process shall create multiple Lambda layers.
 
 ### 5. Create Lambda Function
 
-- Create 3 Lambda functions from the AWS Console with python3.11 runtime and x86_64 architecture. Leave everything else to default.
+- Create one Lambda function for each directory in the Github repo - ManualUpload/OpenAI/AzureOpenAI/Bedrock (except for Lambda-Layers) using python3.11 runtime and x86_64 architecture. Leave everything else to default.
 
 ### 6. Add Layers to Lambda Function
 
 - From Lambda function go to -> “Code” section, scroll down to the “Layers” section and click on “Add a layer”.
 - Select “Custom layers” and choose the layers created in previous step.
   - If the layer name is not shown in the dropdown, select “Specify an ARN” and provide the ARN of the Lambda Layer version.
-  - Repeat this step and add all 3 layers to a function.
-- Perform the same for other 2 Lambda functions. 
+  - Repeat this step and add all the layers created in step 4 to a function.
+- Perform the same for other Lambda functions created in step 5. 
 
 ### 7. Configuration on all 3 Lambda Functions
 
 - Change timeout to 15min and RAM to 512MB:
     - Lambda -> Configuration -> General configuration
 
-- Create Environment Variables:
+- Create Environment Variables common for all the functions:
     - Lambda -> Configuration -> Environment variables:
         - `DBHOST`: <Endpoint URL from step 2>
         - `DBNAME`: <DB name from step 2>
@@ -57,16 +57,16 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
         - `PINECONE_API_KEYS`: < Pinecone api key >
         - `PINECONE_INDEX_NAME`: < Pinecone index name >
 
-- Additional Environment Variable for OpenAI Lambda function:
+- Additional Environment variables for OpenAI Lambda function:
     - `OPEN_API_KEYS`: < Key for OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
-- Additional Environment Variables for Azure OpenAI Lambda function:
+- Additional Environment variables for Azure OpenAI Lambda function:
     - `AZURE_OPENAI_ENDPOINT`: < Custom Azure OpenAI Endpoint >
     - `AZURE_OPEN_API_KEYS`: < Key for Azure OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
-- Additional Environment Variable for Bedrock Lambda function:
+- Additional Environment variables for Bedrock Lambda function:
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Enable Function URL:
@@ -119,6 +119,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-2.pdf
     s3://use-s3-bucket-as-input/uploaded_files/user-1234/dep-1234/test-3.pdf
     ```
+
 ### 11. Other Configurations
 
 - Kindly refer README.md file of the respective folder `01-ManualUpload, 02-OpenAI, 03-AzureOpenAI` for additional Configuration related to specific application and test the same using Postman application.
