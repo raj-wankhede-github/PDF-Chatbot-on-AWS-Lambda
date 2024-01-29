@@ -14,7 +14,6 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI by using the 
 - Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
-
 ### 2. Train the Chatbot
 
 #### Using Postman
