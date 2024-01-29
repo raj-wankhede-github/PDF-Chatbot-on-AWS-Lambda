@@ -66,7 +66,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     - `AZURE_OPEN_API_KEYS`: < Key for Azure OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
-- Additional Environment Variable for OpenAI Lambda function:
+- Additional Environment Variable for Bedrock Lambda function:
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Enable Function URL:
