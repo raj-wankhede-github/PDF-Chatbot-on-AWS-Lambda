@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by using the PDF files from S3 bucket. The process involves updating code from Deployment.zip and test the API.
+This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by using the PDF files from S3 bucket. The process involves updating code from Deployment.zip and test the API.
 
 ## References
 - https://www.pinecone.io/blog/amazon-bedrock-integration/
