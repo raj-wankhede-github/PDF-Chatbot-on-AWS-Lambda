@@ -61,10 +61,10 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
         prompt = \n\nHuman: You are given a document and a query. You need to answer the query on the basis of document. \nIf the answer is not contained within the text below, say - \"Sorry, I dont know. Please try again.\", and do not add any other text in response. \n\n<Document>:{documents} </Document> \n<Query>: {query}</Query> \n\nAssistant:
 
         ```
-   - NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
-   - Reference: 
-        - https://docs.anthropic.com/claude/reference/complete_post 
-        - https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html#api-inference-examples-claude
+- NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
+- Reference: 
+   - https://docs.anthropic.com/claude/reference/complete_post 
+   - https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html#api-inference-examples-claude
 
         
 - Click on Send and wait for the API response.
@@ -91,7 +91,7 @@ This guide outlines the steps to set up a PDF Chatbot using Azure OpenAI by usin
         ```
         
 - NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
--    Reference: 
+- Reference: 
    - https://docs.anthropic.com/claude/reference/complete_post 
    - https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html#api-inference-examples-claude
 
