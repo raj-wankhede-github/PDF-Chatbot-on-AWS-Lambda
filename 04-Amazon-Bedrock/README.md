@@ -8,7 +8,6 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 - https://www.pinecone.io/blog/amazon-bedrock-integration/
 - https://aws.amazon.com/blogs/aws/knowledge-bases-now-delivers-fully-managed-rag-experience-in-amazon-bedrock/ 
 
-
 ## Steps
 
 ### 1. Upload Deployment.zip to Lambda Function
@@ -86,7 +85,6 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
    - `user_id`: <use the same user_id as the folder name created in folder s3://<bucket-name>/uploaded_files/>
    - `deployment_id`: <use the same deployment_id as the folder name created in folder s3://<bucket-name>/uploaded_files/<user_id>/>
    - `question`: < ask query related to PDFs in S3 bucket >
-   - `prompt`: < \n\nHuman: {userQuestion} \n\nAssistant: >
    - Example:
         ```
         user_id: user-001
