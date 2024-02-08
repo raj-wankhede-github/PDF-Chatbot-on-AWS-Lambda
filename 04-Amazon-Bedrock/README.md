@@ -18,20 +18,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 - Select `Deployment.zip` from respective folder on your local machine and click on "Save". 
 - Wait for function to deploy.
 
-### 2. Provide Lambda Execution Role access to Bedrock service
-
-- Lambda -> Configuration -> Permissions -> Click on Role name and it will open IAM console in new browser tab with Role in it.
-- Drop down on Add Permissions and click Attach policies
-- Select `AmazonBedrockFullAccess` and add permission to the Execution Role.
-
-### 3. Remove Environment Variables for Bedrock Function:
-    - Lambda -> Configuration -> Environment variables:
-      - `DBHOST`: <Endpoint URL from step 2>
-      - `DBNAME`: <DB name from step 2>
-      - `DBPASSWORD`: <DB password from step 2>
-      - `DBUSER`: <DB user from step 2>
-
-### 4. Train the Chatbot
+### 2. Train the Chatbot
 
 #### Using Postman
 
@@ -50,7 +37,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
 
 - Click on Send and wait for the request to Finish. The time for request to finish depends on the number of PDFs/size of PDFs in the S3 folder.
 
-### 5. Query the Chatbot
+### 3. Query the Chatbot
 
 #### Using Postman
 
@@ -80,7 +67,7 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
         
 - Click on Send and wait for the API response.
 
-### 6. Chat with the Chatbot
+### 4. Chat with the Chatbot
 
 #### Using Postman
 
@@ -97,17 +84,17 @@ This guide outlines the steps to set up a PDF Chatbot using Amazon Bedrock by us
         user_id: user-001
         deployment_id: dep-001
         question: what are Some of the key elements of focus group research? 
-        prompt: \n\nHuman: You are given a document and a query. You need to answer the query on the basis of document. \nIf the answer is not contained within the text below, say - \"Sorry, I dont know. Please try again.\", and do not add any other text in response. \n\n<Document>:{documents} </Document> \n<Query>: {query}</Query> \n\nAssistant:
         ```
         
-- NOTE: Please make sure the format of the prompt in the request body has "\n\nHuman:" in the beginning and "\n\nAssistant:" at the end.
+- NOTE: We do not use "prompt" in request body as this is set internally within Lambda function code.
 - Reference: 
    - https://docs.anthropic.com/claude/reference/complete_post 
    - https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html#api-inference-examples-claude
 
 - Click on Send and wait for the API response.
+- You can send request with different question and test. The Lambda function saves previous 2 chat QnA in it's history.
 
-### 7. Remove the Pinecone namespace
+### 5. Remove the Pinecone namespace
 
 #### Using Postman
 
