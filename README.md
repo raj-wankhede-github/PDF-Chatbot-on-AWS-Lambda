@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process involves creating a VPC, setting up an RDS PostgreSQL DB, creating Lambda functions, layers, and interacting with the application using Postman.
+This guide outlines the steps to set up a PDF Chatbot using OpenAI/Azure OpenAI/Amazon Bedrock. The process involves creating a VPC, setting up an RDS PostgreSQL DB and DynamoDB, creating Lambda functions, layers, and interacting with the application using Postman.
 
 ## Pre-requisite mandatory steps to use this repository
 
@@ -11,10 +11,14 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 - Create a VPC with Private and Public Subnet.
 - [Provide internet access to the Private Subnet via NAT Gateway](https://repost.aws/knowledge-center/nat-gateway-vpc-private-subnet).
 
-### 2. Create RDS PostgreSQL DB
+### 2. Create RDS PostgreSQL DB and DynamoDB
 
-- Create an RDS PostgreSQL DB with the created VPC in Private subnet.
-- Note down the "DB name", "Master username", "Master password" and "Endpoint URL" for Lambda function configuration.
+- PostgreSQL:
+    - Create an RDS PostgreSQL DB with the created VPC in Private subnet.
+    - Note down the "DB name", "Master username", "Master password" and "Endpoint URL" for Lambda function configuration.
+
+- DynamoDB:
+    - Create DynamoDB Table with "Partition key" (part of the table's primary key) set as String to "SessionId" (Kindly do not change this)
 
 ### 3. Clone GitHub Repository
 
@@ -65,7 +69,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Additional Environment variables for Bedrock Lambda function:
-    - `MEMORY_TABLE`: <use the DynamoDB Table name which has Primary key as "SessionId" (String) >
+    - `MEMORY_TABLE`: <use the DynamoDB Table name from step 2 >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
     - Remove below Environment variables (if added) for Bedrock Lambda function (as we use DynamoDB Table instead of RDS PostgreSQL):
         - `DBHOST`
@@ -88,7 +92,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
     - For `ManualUpload` Lambda function:
         - Remove `AmazonS3FullAccess` permissions (if added). We do not need S3 access as we will upload the file manually using Postman.
-        
+
     - For `Amazon-Bedrock` Lambda function:
         - Remove `AWSLambdaVPCAccessExecutionRole, AmazonRDSFullAccess` permissions (if added). We do not need RDS access because we are using DynamoDB and similarly, we do not put Lambda in VPC and hence we do not need Lambda VPC Access.
         - Add Policy `AmazonBedrockFullAccess`
