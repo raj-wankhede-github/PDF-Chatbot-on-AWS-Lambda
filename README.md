@@ -31,7 +31,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 5. Create Lambda Function
 
-- Create one Lambda function for each directory in the Github repo - ManualUpload/OpenAI/AzureOpenAI/Bedrock (except for Lambda-Layers) using python3.11 runtime and x86_64 architecture. Leave everything else to default.
+- Create one Lambda function for each directory in the Github repo - ManualUpload/OpenAI/AzureOpenAI/Amazon-Bedrock (except for Lambda-Layers) using python3.11 runtime and x86_64 architecture. Leave everything else to default.
 
 ### 6. Add Layers to Lambda Function
 
@@ -40,12 +40,12 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
   - If the layer name is not shown in the dropdown, select “Specify an ARN” and provide the ARN of the Lambda Layer version.
 - Perform the same for other Lambda functions created in step 5. 
 
-### 7. Configuration on all 3 Lambda Functions
+### 7. Configuration on all the Lambda Functions
 
 - Change timeout to 15 min and RAM to 512MB:
     - Lambda -> Configuration -> General configuration
 
-- Create Environment Variables common for all the functions:
+- Create Environment Variables common for all the functions
     - Lambda -> Configuration -> Environment variables:
         - `DBHOST`: <Endpoint URL from step 2>
         - `DBNAME`: <DB name from step 2>
@@ -55,16 +55,17 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
         - `PINECONE_API_KEYS`: < Use the Pinecone api key >
         - `PINECONE_INDEX_NAME`: < Use the Pinecone index name >
 
-- Additional Environment variables for OpenAI Lambda function:
+- Additional Environment variables for `OpenAI` Lambda function:
     - `OPEN_API_KEYS`: < Use Key for OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
-- Additional Environment variables for Azure OpenAI Lambda function:
+- Additional Environment variables for `AzureOpenAI` Lambda function:
     - `AZURE_OPENAI_ENDPOINT`: < Use Custom Azure OpenAI Endpoint >
     - `AZURE_OPEN_API_KEYS`: < Use the Key for Azure OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Additional Environment variables for Bedrock Lambda function:
+    - `MEMORY_TABLE`: <use the DynamoDB Table name which has Primary key as "SessionId" (String) >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Enable Function URL:
