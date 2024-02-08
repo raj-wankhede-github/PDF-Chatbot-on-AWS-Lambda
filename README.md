@@ -23,12 +23,10 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 ### 4. Create Lambda Layer
 
 - Go to Lambda Layers (in the same region as the created Lambda function) and click on "Create Layer".
-- Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose `Layer-01-Flask-langchain-openai.zip`.
+- Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose `Layer-01-Lambda-layer-All-in-one-dependencies.zip`.
 - Tick x86_64.
 - Under Compatible Runtime, select Python3.11.
 - Click Create.
-- Repeat above steps and select the other zip files: `Layer-02-pinecone-psycopg2-PyPDF2-tqdm-Werkzeug-tiktoken.tzip` and `Layer-03-PyMuPDF.zip`.
-- This process shall create multiple Lambda layers.
 
 ### 5. Create Lambda Function
 
@@ -39,7 +37,6 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 - From Lambda function go to -> “Code” section, scroll down to the “Layers” section and click on “Add a layer”.
 - Select “Custom layers” and choose the layers created in previous step.
   - If the layer name is not shown in the dropdown, select “Specify an ARN” and provide the ARN of the Lambda Layer version.
-  - Repeat this step and add all the layers created in step 4 to a function.
 - Perform the same for other Lambda functions created in step 5. 
 
 ### 7. Configuration on all 3 Lambda Functions
