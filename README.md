@@ -18,14 +18,15 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 3. Clone GitHub Repository
 
-- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the `00-Lambda-Layers` folder, where 3 zip files are available.
+- Clone the [GitHub folder](https://github.com/manipuraco/askcybexAPIs/) (or Download) and navigate to the `00-Lambda-Layers` folder on local machine.
 
 ### 4. Create Lambda Layer
 
 - Go to Lambda Layers (in the same region as the created Lambda function) and click on "Create Layer".
-- Provide Name, Description (optional), and select "Upload a .zip file" option (or use S3). Choose `Layer-01-Lambda-layer-All-in-one-dependencies.zip`.
+- Upload a file to  Amazon S3 - `Layer-01-Lambda-layer-All-in-one-dependencies.zip`. Copy the URL for the object in S3 bucket.
+- Provide Name, Description (optional), and select "Upload a file from Amazon S3" and use the URL copied in previous step.
 - Tick x86_64.
-- Under Compatible Runtime, select Python3.11.
+- Under Compatible Runtime, select Python3.11. Do not select any other Python version as the dependencies was created using pip3.11 that uses python3.11 version.
 - Click Create.
 
 ### 5. Create Lambda Function
@@ -51,16 +52,16 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
         - `DBPASSWORD`: <DB password from step 2>
         - `DBUSER`: <DB user from step 2>
         - `ENVIRONMENT`: <Environment from Pinecone. E.g., gcp-starter>
-        - `PINECONE_API_KEYS`: < Pinecone api key >
-        - `PINECONE_INDEX_NAME`: < Pinecone index name >
+        - `PINECONE_API_KEYS`: < Use the Pinecone api key >
+        - `PINECONE_INDEX_NAME`: < Use the Pinecone index name >
 
 - Additional Environment variables for OpenAI Lambda function:
-    - `OPEN_API_KEYS`: < Key for OpenAI >
+    - `OPEN_API_KEYS`: < Use Key for OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Additional Environment variables for Azure OpenAI Lambda function:
-    - `AZURE_OPENAI_ENDPOINT`: < Custom Azure OpenAI Endpoint >
-    - `AZURE_OPEN_API_KEYS`: < Key for Azure OpenAI >
+    - `AZURE_OPENAI_ENDPOINT`: < Use Custom Azure OpenAI Endpoint >
+    - `AZURE_OPEN_API_KEYS`: < Use the Key for Azure OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
 - Additional Environment variables for Bedrock Lambda function:
@@ -79,7 +80,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
     - Drop down on Add Permissions and click Attach policies
     - Select `AWSLambdaVPCAccessExecutionRole, AmazonRDSFullAccess, AmazonS3FullAccess` and add permission to the Execution Role.
 
-- Configure VPC access to Lambda function:
+- Configure VPC access to Lambda function: (IMPORTANT: Skip VPC step for Bedrock Lambda function)
     - Lambda -> Configuration -> VPC -> Select VPC -> Choose Private Subnets ONLY (where default route is not directed to IGW) -> Select SG (mentioned below) and click Save. This takes some time to create ENIs that Lambda uses to access the VPC resources (like RDS).
 
         - Choose Security Group (e.g., Lambda-SG) such that it gives OUTBOUND access to RDS via port 5432 on Destination SG (e.g., RDS-SG)
@@ -119,4 +120,4 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 11. Other Configurations
 
-- Kindly refer README.md file of the respective folder `01-ManualUpload, 02-OpenAI, 03-AzureOpenAI` for additional Configuration related to specific application and test the same using Postman application.
+- Kindly refer README.md file of the respective folder `01-ManualUpload, 02-OpenAI, 03-AzureOpenAI, 04-Amazon-Bedrock` for additional Configuration related to specific application and test the same using Postman application.
