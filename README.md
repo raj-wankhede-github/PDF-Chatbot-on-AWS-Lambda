@@ -22,11 +22,11 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 4. Create Lambda Layer
 
+- Upload a file from `00-Lambda-Layers` to Amazon S3 Bucket - `Layer-01-Lambda-layer-All-in-one-dependencies.zip`. Copy the URL for the object in S3 bucket.
 - Go to Lambda Layers (in the same region as the created Lambda function) and click on "Create Layer".
-- Upload a file to  Amazon S3 - `Layer-01-Lambda-layer-All-in-one-dependencies.zip`. Copy the URL for the object in S3 bucket.
 - Provide Name, Description (optional), and select "Upload a file from Amazon S3" and use the URL copied in previous step.
 - Tick x86_64.
-- Under Compatible Runtime, select Python3.11. Do not select any other Python version as the dependencies was created using pip3.11 that uses python3.11 version.
+- Under Compatible Runtime, select Python3.11. Do not select any other Python version as the dependencies in the zip file was created using pip3.11 that uses python3.11 version.
 - Click Create.
 
 ### 5. Create Lambda Function
@@ -42,7 +42,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI. The process 
 
 ### 7. Configuration on all 3 Lambda Functions
 
-- Change timeout to 15min and RAM to 512MB:
+- Change timeout to 15 min and RAM to 512MB:
     - Lambda -> Configuration -> General configuration
 
 - Create Environment Variables common for all the functions:
