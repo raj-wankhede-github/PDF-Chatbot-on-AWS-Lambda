@@ -68,7 +68,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI/Azure OpenAI/
     - `AZURE_OPEN_API_KEYS`: < Use the Key for Azure OpenAI >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
 
-- Additional Environment variables for Bedrock Lambda function:
+- Additional Environment variables for `Amazon-Bedrock` Lambda function:
     - `MEMORY_TABLE`: <use the DynamoDB Table name from step 2 >
     - `S3_BUCKET_NAME`: < S3 bucket where the PDF files are present >
     - Remove below Environment variables (if added) for Bedrock Lambda function (as we use DynamoDB Table instead of RDS PostgreSQL):
