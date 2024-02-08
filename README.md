@@ -44,7 +44,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI/Azure OpenAI/
   - If the layer name is not shown in the dropdown, select “Specify an ARN” and provide the ARN of the Lambda Layer version.
 - Perform the same for other Lambda functions created in step 5. 
 
-### 7. Configuration on all the Lambda Functions
+### 7. Configuration on all the Lambda Functions (Unless specified for respective Lambda function)
 
 - Change timeout to 15 min and RAM to 512MB:
     - Lambda -> Configuration -> General configuration
@@ -85,7 +85,7 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI/Azure OpenAI/
 - Change the Lambda handler
     - Function -> Code -> scroll down to "Runtime settings" and click Edit -> Change the "Handler" to `app.lambda_handler`
     
-- Provide Lambda Execution Role access to EC2/S3/RDS/Bedrock for :
+- Provide Lambda Execution Role access to EC2/S3/RDS/Bedrock:
     - Lambda -> Configuration -> Permissions -> Click on Role name and it will open IAM console in new browser tab with Role in it.
     - Drop down on Add Permissions and click Attach policies
     - Select `AWSLambdaVPCAccessExecutionRole, AmazonRDSFullAccess, AmazonS3FullAccess` and add permission to the Execution Role.
@@ -94,10 +94,10 @@ This guide outlines the steps to set up a PDF Chatbot using OpenAI/Azure OpenAI/
         - Remove `AmazonS3FullAccess` permissions (if added). We do not need S3 access as we will upload the file manually using Postman.
 
     - For `Amazon-Bedrock` Lambda function:
-        - Remove `AWSLambdaVPCAccessExecutionRole, AmazonRDSFullAccess` permissions (if added). We do not need RDS access because we are using DynamoDB and similarly, we do not put Lambda in VPC and hence we do not need Lambda VPC Access.
         - Add Policy `AmazonBedrockFullAccess`
-
-- Configure VPC access to Lambda function: (IMPORTANT: Skip VPC step for `Amazon-Bedrock` Lambda function)
+        - Remove `AWSLambdaVPCAccessExecutionRole, AmazonRDSFullAccess` permissions (if added). We do not need RDS access because we are using DynamoDB and similarly, we do not put Lambda in VPC and hence we do not need Lambda VPC Access.
+        
+- Configure VPC access to Lambda function: (IMPORTANT: Skip this VPC part for `Amazon-Bedrock` Lambda function)
     - Lambda -> Configuration -> VPC -> Select VPC -> Choose Private Subnets ONLY (where default route is not directed to IGW) -> Select SG (mentioned below) and click Save. This takes some time to create ENIs that Lambda uses to access the VPC resources (like RDS).
 
         - Choose Security Group (e.g., Lambda-SG) such that it gives OUTBOUND access to RDS via port 5432 on Destination SG (e.g., RDS-SG)
